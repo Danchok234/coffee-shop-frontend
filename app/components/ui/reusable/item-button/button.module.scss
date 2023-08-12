@@ -1,0 +1,25 @@
+@import '@/scss/variables';
+
+.button {
+	@apply bg-grey pt-1 pb-1 p-3 rounded-xl flex items-center mt-6 mb-2 relative;
+	transition: transform 0.3s, box-shadow 0.3s ease;
+	> span {
+		@apply text-green uppercase tracking-wide text-xs font-light;
+	}
+	&.large {
+		@apply bg-grey pt-1 pb-1 p-3 rounded-xl flex items-center justify-center mt-12 mb-2 relative w-full h-8;
+		> span {
+			@apply text-green uppercase text-base font-normal tracking-wider;
+		}
+		@include laptop {
+		@apply w-[100%] flex items-center justify-center;
+		padding:1.5rem 3rem !important;
+	}
+	}
+	&:hover {
+		@apply shadow-lg;
+		transform: scale(1.1);
+	}
+
+	
+}

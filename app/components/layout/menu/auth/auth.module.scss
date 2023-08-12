@@ -1,0 +1,129 @@
+@import '@/scss/variables';
+
+.form-box {
+	@apply absolute bg-brown bg-opacity-75 z-40 w-screen min-h-screen left-0 top-0 flex items-center justify-center flex-col gap-16;
+	.back {
+		@apply w-full h-full absolute top-0 left-0 z-[41];
+	}
+	> h2 {
+		@apply text-[white] font-semibold text-3xl;
+	}
+}
+
+.form {
+	@apply flex flex-col gap-10 w-[30rem] relative z-[42];
+	.submit-button {
+		@apply w-[90%] bg-light-green h-12 self-center rounded-xl text-green font-bold text-xl cursor-pointer;
+		&:disabled {
+			@apply cursor-default bg-opacity-80 text-grey;
+		}
+	}
+	> h2 {
+		@apply text-[white] font-semibold text-3xl;
+	}
+	.form-body {
+		@apply bg-grey min-h-min p-10 pt-14 rounded-xl flex flex-col gap-10 justify-center items-center;
+		.block {
+			@apply w-full flex flex-col items-center justify-center gap-2;
+			.password-input {
+				@apply relative w-[80%];
+				> input {
+					@apply w-full p-2 rounded-lg;
+					&:focus {
+						@apply outline-green;
+					}
+					&.correct {
+						@apply border-green border-2;
+					}
+					&.incorrect {
+						@apply border-red border-2;
+					}
+					&::placeholder {
+						@apply text-brown tracking-wider;
+					}
+				}
+				.eye-icon {
+					@apply absolute -right-[10%] top-[25%] text-xl;
+				}
+			}
+			> input {
+				@apply w-[80%] p-2 rounded-lg;
+				&:focus {
+					@apply outline-green;
+				}
+				&.correct {
+					@apply border-green border-2;
+				}
+				&.incorrect {
+					@apply border-red border-2;
+				}
+				&::placeholder {
+					@apply text-brown tracking-wider;
+				}
+			}
+		}
+		.info-text {
+			> a {
+				@apply cursor-pointer text-green;
+				transition: text-decoration 0.3s ease;
+				&:hover {
+					@apply underline;
+				}
+			}
+		}
+	}
+}
+
+.error-block {
+	@apply text-red flex pl-14 self-start items-center max-w-full break-all;
+	.error {
+		@apply text-red pl-3 font-bold text-sm;
+	}
+}
+
+.logged-in {
+	@apply flex flex-col relative;
+	z-index: 20;
+	.username {
+		@apply bg-grey tracking-wider p-3 rounded-xl flex items-center gap-2 cursor-pointer;
+		.icon {
+			transition: transform 0.4s ease-in-out;
+			@apply text-2xl;
+			&.clicked {
+				transform: rotate(-180deg);
+			}
+		}
+	}
+	.log-out {
+		@apply absolute top-0 opacity-0 invisible flex items-center justify-center w-[8rem] gap-2 bg-transparent p-2 rounded-xl text-[white];
+		transition: all 0.4s ease-in-out;
+		&.clicked {
+			@apply opacity-100 top-14 bg-green cursor-pointer visible;
+		}
+	}
+}
+
+@include mobile {
+	.form-box {
+		@apply fixed;
+	}
+	.form {
+		@apply justify-center items-center w-[90%] min-w-[60%];
+		.submit-button {
+			@apply w-[80%];
+		}
+		.form-body {
+			@apply pl-1 pr-1;
+			.info-text {
+				@apply pl-10 pr-10;
+				> a {
+					@apply cursor-pointer text-green text-lg font-bold;
+					transition: text-decoration 0.3s ease;
+					&:hover {
+						@apply underline;
+					}
+				}
+			}
+		}
+	}
+}

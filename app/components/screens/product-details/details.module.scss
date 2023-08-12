@@ -1,0 +1,46 @@
+@import "@/scss/variables";
+
+.breadcrumbs{
+	@apply flex justify-end mr-5 text-lg -mt-8;
+	.breadcrumb-curr{
+		@apply tracking-wider text-brown;
+	}
+}
+.navigation{
+	@apply flex gap-6 text-4xl font-semibold justify-end mt-10 mr-16;
+	> a{
+		@apply transition-all;
+			border: solid grey;
+			border-width: 0 5px 5px 0;
+			display: inline-block;
+			padding: 7px;
+			&:not(.disabled){
+				&:hover{
+					border-color: black;
+				}
+			}	
+	}
+	.right{
+		transform: rotate(-45deg);
+	}
+	.left{
+		transform: rotate(135deg);
+	}
+	.disabled{
+		@apply border-grey pointer-events-none;
+	}
+
+	@include tablet{
+		@apply -mt-8 ml-8 justify-start;
+	};
+	@include mobile{
+		@apply mt-6 ml-0 justify-end -mb-2;
+		>a{
+			border-width: 0 6px 6px 0;
+		}
+	}
+
+}
+.content{
+	@apply flex justify-center;
+}

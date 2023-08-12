@@ -1,0 +1,250 @@
+@import '@/scss/variables';
+
+.card {
+	@apply w-[95%] min-h-min grid grid-cols-3 bg-green mt-12 rounded-3xl p-8 relative overflow-hidden;
+	.bg-pattern {
+		@apply absolute w-full bg-[url("/bg-pattern/coffee-pattern-bg-brown.png")] h-full opacity-20 bg-cover bg-no-repeat;
+	}
+	.info {
+		@apply flex flex-col justify-between gap-5 relative;
+		.description {
+			@apply text-[white] font-medium text-xl;
+		}
+		.images {
+			@apply grid justify-start gap-y-5 gap-x-2 grid-cols-3;
+			.image-variant {
+				@apply rounded-2xl bg-grey transition-all;
+				&.active {
+					@apply bg-light-brown;
+					transform: scale(1.1);
+				}
+			}
+		}
+	}
+	.image-box {
+		@apply flex flex-col items-center justify-center gap-4;
+		.image {
+			@apply rounded-full bg-[#FFFAF4] flex items-center justify-center self-center relative flex-col;
+			box-shadow: 0 0 2rem 0.1px grey;
+		}
+		.price {
+			@apply text-[white] font-bold text-4xl;
+		}
+	}
+	.configurations {
+		@apply flex flex-col;
+		.rating {
+			@apply ml-5 mt-3;
+			> h6 {
+				@apply text-[white] text-lg tracking-wider font-medium pb-3;
+			}
+			.stars {
+				@apply text-[white];
+			}
+			.reviews {
+				@apply flex items-center gap-3 -mt-3 mb-4;
+				.actions-block {
+					@apply flex gap-3;
+					> button {
+						@apply bg-black p-2 w-20 relative rounded-xl;
+						transition: transform 0.4s ease;
+						&:hover {
+							transform: scale(1.1);
+						}
+						&.disabled-button {
+							@apply cursor-default bg-brown transition-none;
+							&:hover {
+								transform: scale(1);
+							}
+						}
+						> h6 {
+							@apply text-grey text-sm font-medium;
+						}
+					}
+				}
+			}
+		}
+		.actions {
+			@apply mt-7 self-center;
+		}
+		.pop-up {
+			@apply flex-col min-h-screen top-0 left-0 bg-brown z-[41] bg-opacity-75 min-w-full flex items-center justify-center gap-16 fixed;
+			.back {
+				@apply w-full h-full absolute top-0 left-0 z-[40];
+			}
+			> h2 {
+				@apply text-[white] font-semibold text-3xl;
+			}
+			.list-body {
+				@apply w-[40rem] bg-grey opacity-100 p-8 rounded-xl gap-2 max-h-96 overflow-y-scroll relative z-50;
+				> h3 {
+					@apply self-start pb-10;
+					> span {
+						@apply text-lg font-medium tracking-wider ml-[25%];
+					}
+				}
+				.list {
+					@apply flex flex-col gap-6;
+					> *:not(:last-child) {
+						padding-bottom: 1.5rem;
+						border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+						border-width: 120%;
+					}
+					.pop-up__item {
+						@apply flex flex-col gap-3;
+						.username {
+							@apply text-lg tracking-wider;
+						}
+						> p {
+							@apply text-[black] text-lg;
+						}
+					}
+				}
+				form {
+					@apply flex flex-col gap-10;
+					.textarea {
+						@apply flex gap-4;
+						> h4 {
+							@apply text-sm self-end;
+						}
+						> textarea {
+							@apply p-2 rounded-xl;
+							resize: none;
+							&:focus {
+								@apply outline-green;
+							}
+						}
+					}
+					.rating-div {
+						@apply flex;
+						.stars {
+							@apply ml-[30%];
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.submit-button {
+		@apply w-[24rem] bg-light-green h-12 self-center rounded-xl text-green font-bold text-xl cursor-pointer relative z-50;
+		&:disabled {
+			@apply cursor-default bg-opacity-80 text-grey;
+		}
+	}
+
+	@include laptop {
+		@apply w-[80%] grid-cols-1;
+		grid-template-rows: 7rem, 20rem, 10rem;
+		.bg-pattern {
+			@apply left-0 top-0;
+		}
+		.image-box {
+			.image {
+				@apply w-[20rem] h-[20rem];
+			}
+			.price {
+				@apply text-2xl;
+			}
+		}
+		.info {
+			@apply grid grid-cols-2 justify-between gap-5 relative pb-8;
+			.description {
+				@apply text-lg;
+			}
+			.images {
+				@apply grid justify-start gap-y-5 gap-x-5;
+				grid-template-colums: repeat(auto-fit, 1fr);
+				.image-variant {
+					@apply min-w-[5rem] min-h-[5rem] w-20 h-20;
+				}
+			}
+		}
+		.configurations {
+			@apply m-auto;
+		}
+	}
+	@include tablet {
+		.info {
+			.images {
+				@apply grid-cols-2;
+			}
+		}
+		.configurations {
+			.pop-up {
+				> h2 {
+					display: none;
+				}
+				.list-body {
+					@apply max-h-[28rem] max-w-[95%] w-[95%] min-w-[50%] justify-center items-center;
+					> h3 {
+						@apply min-w-[50%];
+					}
+					.review-form {
+						@apply w-full items-start;
+						.textarea {
+							@apply min-w-[50%];
+							> textarea {
+								@apply w-[80%];
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	@include mobile {
+		@apply w-full;
+		.info {
+			@apply flex;
+			.images {
+				@apply flex flex-wrap;
+			}
+		}
+		.configurations {
+			.rating {
+				.rating-label {
+					@apply opacity-0;
+				}
+				.reviews {
+					@apply flex-col gap-6;
+					.actions-block {
+						@apply gap-8;
+					}
+				}
+			}
+			.pop-up {
+				.submit-button {
+					@apply w-[80%];
+				}
+				.list-body {
+					> h3 {
+						> span {
+							@apply ml-[15%];
+						}
+					}
+					.review-form {
+						.textarea {
+							> textarea {
+							}
+							> h4 {
+								@apply invisible w-7;
+								> span {
+									@apply visible;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.image-box {
+		.image{
+			@apply w-[250px] h-[250px]
+		}
+		.price{
+
+		}
+	}
+}

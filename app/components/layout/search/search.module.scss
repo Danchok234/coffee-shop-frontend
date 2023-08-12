@@ -1,0 +1,51 @@
+@import "@/scss/variables";
+.search{
+	@apply flex items-center w-2/6 relative;
+
+	&::after{
+		content:"";
+		@apply -left-2 -bottom-2 w-[100%] h-0.5 bg-green opacity-50 absolute;
+	}
+
+	&::before{
+		content:"";
+		@apply w-[180%] pt-[180%] absolute -z-40 bg-light-green rounded-full -right-[40%] -top-[15rem] laptop:opacity-0 desktop:opacity-100 tablet:opacity-0;
+	}
+
+	> input{
+		@apply w-[90%] placeholder:tracking-widest border-none z-10 bg-transparent;
+		&:focus-visible{
+			outline:none;
+		}
+	}
+	&.without{
+		&::after{
+			content:"";
+			@apply opacity-0
+		}
+	}
+
+	@include desktop{
+		@apply flex items-center justify-center mr-4 ml-4 shrink w-1/2 rounded-2xl;
+		border:1px solid green;
+
+		&::after{
+			display:none;
+		}
+
+		&::before{
+			display:none;
+		}
+		
+		> input{
+		@apply w-full placeholder:tracking-widest z-10 bg-transparent p-3;
+		&:focus-visible{
+			outline:none;
+		}
+
+	}
+	&.without{
+		@apply border-none opacity-0 mt-12;
+	}
+	}
+}

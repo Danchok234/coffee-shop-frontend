@@ -1,0 +1,100 @@
+@import '@/scss/variables';
+.cart {
+	@apply p-2 flex gap-2;
+	> button {
+		@apply relative z-20 text-brown;
+		letter-spacing: 0.2em;
+		.cart-icon {
+			@apply w-8 h-8 mr-5 block;
+		}
+		@include mobile{
+			.cart-icon{
+				@apply mr-0
+			}
+		}
+	}
+	.badge {
+		@apply bg-red rounded-full w-4 h-4 flex items-center justify-center text-grey text-xs mt-1;
+		@include mobile{
+			right:0rem !important;
+			top:-0.3rem !important;
+		}
+	}
+	&-footer {
+		border-top: 1px solid rgba(0, 0, 0, 0.1);
+	}
+	@include tablet {
+		@apply relative;
+		.badge {
+			@apply absolute right-4 -top-2 w-[1.1rem] h-[1.1rem] text-sm;
+			font-size: 0.8rem;
+			line-height: 1.2rem;
+		}
+	}
+}
+
+.body {
+	> *:not(:last-child) {
+		border-bottom: 1px solid rgba(80, 141, 103, 0.5);
+	}
+	.no-items-h1 {
+		@apply font-medium text-lg text-center text-green;
+	}
+}
+
+.cart-item {
+	@apply grid grid-cols-2 grid-rows-[100px_minmax(75px,100px)] mb-5 items-center;
+	> img {
+		@apply bg-light-green rounded w-28 h-28;
+	}
+
+	> h4 {
+		@apply font-medium flex flex-col items-start gap-3;
+		> span {
+			@apply opacity-40 text-sm tracking-wider font-light;
+		}
+	}
+	> * {
+		@apply flex items-center;
+	}
+	&__price {
+		@apply bg-light-green opacity-80 rounded min-w-[2rem] h-8 flex items-center justify-center ml-3 font-semibold text-[#562B08];
+	}
+	.quantity-block {
+		@apply flex flex-col pb-2 relative -top-[0.55rem];
+		> h4 {
+			@apply text-sm pb-2;
+		}
+		.actions-block {
+			@apply flex gap-3;
+			> h5 {
+				@apply font-medium text-lg;
+			}
+			> button {
+				@apply bg-light-green opacity-50 rounded w-8 h-8 flex items-center justify-center font-semibold text-[#562B08];
+			}
+		}
+	}
+	@include tablet {
+		> h4 {
+			@apply text-lg;
+		}
+		&__price {
+			@apply h-9 w-9 text-xl;
+		}
+		.actions-block {
+			> button {
+				@apply w-9 h-9 text-lg;
+			}
+		}
+	}
+}
+.total {
+	@apply flex flex-col;
+	> h5 {
+		@apply opacity-50 text-xs;
+	}
+	> span {
+		@apply font-semibold text-lg;
+	}
+}

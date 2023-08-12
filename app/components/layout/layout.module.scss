@@ -1,0 +1,27 @@
+@import "@/scss/variables";
+
+.header{
+	@apply flex justify-between pt-20 pb-2 pl-12 pr-12 max-h-20 h-20 w-full items-center max-w-[1920px] m-auto;
+	@include desktop{
+		@apply bg-light-green h-20 p-3;
+		border: 1px solid rgba(128,128,128,.4);
+	}
+	@include laptop{
+		>div{
+			@apply flex flex-col gap-6 w-full items-center pt-[4.5rem];
+			>div{
+				@apply flex w-full h-full justify-between
+			}
+		}
+	}
+}
+
+.wrapper{
+	@apply max-w-[1278px];
+	margin: 2rem auto;
+	padding:0 1rem;
+}
+
+.content{
+	@apply mt-20;
+}

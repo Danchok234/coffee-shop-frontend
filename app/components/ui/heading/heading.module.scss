@@ -1,0 +1,18 @@
+@import "@/scss/variables" ;
+.heading{
+	@apply mt-6 mb-14 flex justify-end w-full;
+	>h1{
+		@apply w-1/2 text-7xl tracking-tight text-green font-extrabold text-right overflow-visible;
+		overflow-wrap: normal;
+	}
+	@include tablet{
+		>h1{
+			@apply text-6xl w-[75%] 
+		}
+	}
+	@include mobile{
+		>h1{
+			@apply w-full
+		}
+	}
+}

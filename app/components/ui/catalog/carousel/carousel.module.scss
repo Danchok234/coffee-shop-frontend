@@ -1,0 +1,82 @@
+@import "@/scss/variables";
+
+.sort-menu{
+	@apply flex justify-end mt-14 relative z-30 mr-10;
+}
+.carousel{
+	@apply grid justify-items-center gap-x-10 gap-y-20 min-h-min max-h-[27rem] w-full mt-24 pb-20;
+	grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+
+	.item{
+		@apply flex items-start flex-col gap-2 rounded-xl text-light-brown bg-grey p-5 pt-0 min-h-[25rem] min-w-0;
+		transition:transform 0.3s, box-shadow 0.3s ease-in-out;
+		width:17rem;
+		.image{
+			transition: transform 0.3s ease-in-out;
+			@apply -mt-12 self-center;
+		}
+		.name{
+			@apply text-xl font-bold mb-2 min-h-[3.3rem] max-h-[3.6rem];
+		}
+		.description{
+			@apply w-[100%];
+			> ul{
+				@apply pl-2;
+				> li{
+					@apply flex justify-between;
+					>h5{
+						@apply text-lg font-semibold
+					}
+				}
+			}
+		}
+		&.active{
+			@apply relative items-center mb-0 bg-green;
+			transform:scale(1.2);
+			box-shadow: 0px 0px 25px #508D67;
+			.bg-image{
+				@apply rounded-xl left-0 overflow-hidden absolute -z-10 w-full h-1/2; 
+				background-image: linear-gradient(to top, rgba(16,126,82, 1), rgba(16,126,82, 0.5)), url("/bg-pattern/coffee-pattern-bg.png");
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+			}
+			.name{
+				transition:font-size 0.3s, color 0.3s ease-in-out;
+				@apply text-grey text-2xl mt-4 flex items-center h-[24rem];
+			}
+			.image{
+				@apply -mt-16;
+				transform:scale(1.1)
+			}
+			.more{
+				@apply italic text-grey tracking-wide text-sm opacity-80;
+				&:hover{
+					@apply underline;
+				}
+			}
+		}
+	}
+	@include laptop{
+		.item{
+			.image{
+				@apply -mt-8
+			}	
+			&.active{
+				.image{
+					@apply -mt-10;
+					transform:scale(1.04)
+				}
+			}
+			.more{
+				@apply rounded-2xl;
+				border:1px solid rgba(255,255,255,.5);
+				padding:0.5rem;
+			}
+		}
+		
+	}
+	@include tablet{
+		@apply mt-12
+	}
+}

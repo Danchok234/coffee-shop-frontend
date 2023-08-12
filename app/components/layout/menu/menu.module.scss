@@ -1,0 +1,11 @@
+@import "@/scss/variables";
+.menu{
+	@apply flex items-center gap-10;
+	.logo{
+		@apply shrink-0
+	}
+	@include mobile{
+		@apply gap-4
+	}
+}
+
